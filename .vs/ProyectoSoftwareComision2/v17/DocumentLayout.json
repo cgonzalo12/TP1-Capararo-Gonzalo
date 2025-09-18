@@ -1,0 +1,186 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{49933631-7941-4D6B-9C80-5C5F66C8977E}|Domain\\Domain.csproj|c:\\users\\capgo\\source\\repos\\proyectosoftwarecomision2\\domain\\entities\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49933631-7941-4D6B-9C80-5C5F66C8977E}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49933631-7941-4D6B-9C80-5C5F66C8977E}|Domain\\Domain.csproj|c:\\users\\capgo\\source\\repos\\proyectosoftwarecomision2\\domain\\entities\\dish.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49933631-7941-4D6B-9C80-5C5F66C8977E}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\dish.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49933631-7941-4D6B-9C80-5C5F66C8977E}|Domain\\Domain.csproj|c:\\users\\capgo\\source\\repos\\proyectosoftwarecomision2\\domain\\entities\\deliverytype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49933631-7941-4D6B-9C80-5C5F66C8977E}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\deliverytype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49933631-7941-4D6B-9C80-5C5F66C8977E}|Domain\\Domain.csproj|c:\\users\\capgo\\source\\repos\\proyectosoftwarecomision2\\domain\\entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49933631-7941-4D6B-9C80-5C5F66C8977E}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{60B8C9EB-D799-4A7B-AA35-FFC48670E23F}|Infrastructure\\Infrastructure.csproj|c:\\users\\capgo\\source\\repos\\proyectosoftwarecomision2\\infrastructure\\commands\\categorycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60B8C9EB-D799-4A7B-AA35-FFC48670E23F}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\commands\\categorycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E2B37D6-0503-43BE-A79F-E99D2959FFFD}|ProyectoSoftwareComision2\\ProyectoSoftwareComision2.csproj|c:\\users\\capgo\\source\\repos\\proyectosoftwarecomision2\\proyectosoftwarecomision2\\controllers\\orderitemcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E2B37D6-0503-43BE-A79F-E99D2959FFFD}|ProyectoSoftwareComision2\\ProyectoSoftwareComision2.csproj|solutionrelative:proyectosoftwarecomision2\\controllers\\orderitemcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E2B37D6-0503-43BE-A79F-E99D2959FFFD}|ProyectoSoftwareComision2\\ProyectoSoftwareComision2.csproj|c:\\users\\capgo\\source\\repos\\proyectosoftwarecomision2\\proyectosoftwarecomision2\\controllers\\dishescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E2B37D6-0503-43BE-A79F-E99D2959FFFD}|ProyectoSoftwareComision2\\ProyectoSoftwareComision2.csproj|solutionrelative:proyectosoftwarecomision2\\controllers\\dishescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E2B37D6-0503-43BE-A79F-E99D2959FFFD}|ProyectoSoftwareComision2\\ProyectoSoftwareComision2.csproj|c:\\users\\capgo\\source\\repos\\proyectosoftwarecomision2\\proyectosoftwarecomision2\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E2B37D6-0503-43BE-A79F-E99D2959FFFD}|ProyectoSoftwareComision2\\ProyectoSoftwareComision2.csproj|solutionrelative:proyectosoftwarecomision2\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A211DBFE-17C5-4751-9733-D58F1D91B3B7}|Application\\Application.csproj|c:\\users\\capgo\\source\\repos\\proyectosoftwarecomision2\\application\\services\\getallorderitemservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A211DBFE-17C5-4751-9733-D58F1D91B3B7}|Application\\Application.csproj|solutionrelative:application\\services\\getallorderitemservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1E2B37D6-0503-43BE-A79F-E99D2959FFFD}|ProyectoSoftwareComision2\\ProyectoSoftwareComision2.csproj|c:\\users\\capgo\\source\\repos\\proyectosoftwarecomision2\\proyectosoftwarecomision2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E2B37D6-0503-43BE-A79F-E99D2959FFFD}|ProyectoSoftwareComision2\\ProyectoSoftwareComision2.csproj|solutionrelative:proyectosoftwarecomision2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\Domain\\Entities\\Order.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\Order.cs",
+              "ToolTip": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\Domain\\Entities\\Order.cs",
+              "RelativeToolTip": "Domain\\Entities\\Order.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-18T13:41:12.521Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Dish.cs",
+              "DocumentMoniker": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\Domain\\Entities\\Dish.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\Dish.cs",
+              "ToolTip": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\Domain\\Entities\\Dish.cs",
+              "RelativeToolTip": "Domain\\Entities\\Dish.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-18T13:40:38.724Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DeliveryType.cs",
+              "DocumentMoniker": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\Domain\\Entities\\DeliveryType.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\DeliveryType.cs",
+              "ToolTip": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\Domain\\Entities\\DeliveryType.cs",
+              "RelativeToolTip": "Domain\\Entities\\DeliveryType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-18T13:40:31.872Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Category.cs",
+              "DocumentMoniker": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\Domain\\Entities\\Category.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\Category.cs",
+              "ToolTip": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\Domain\\Entities\\Category.cs",
+              "RelativeToolTip": "Domain\\Entities\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-18T13:40:19.043Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CategoryCommand.cs",
+              "DocumentMoniker": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\Infrastructure\\Commands\\CategoryCommand.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Commands\\CategoryCommand.cs",
+              "ToolTip": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\Infrastructure\\Commands\\CategoryCommand.cs",
+              "RelativeToolTip": "Infrastructure\\Commands\\CategoryCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-18T13:40:12.511Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\ProyectoSoftwareComision2\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "ProyectoSoftwareComision2\\Controllers\\OrderController.cs",
+              "ToolTip": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\ProyectoSoftwareComision2\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "ProyectoSoftwareComision2\\Controllers\\OrderController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwCIAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-17T23:14:24.176Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DishesController.cs",
+              "DocumentMoniker": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\ProyectoSoftwareComision2\\Controllers\\DishesController.cs",
+              "RelativeDocumentMoniker": "ProyectoSoftwareComision2\\Controllers\\DishesController.cs",
+              "ToolTip": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\ProyectoSoftwareComision2\\Controllers\\DishesController.cs",
+              "RelativeToolTip": "ProyectoSoftwareComision2\\Controllers\\DishesController.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAgwCQAAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-17T23:11:55.301Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "OrderItemCommand.cs",
+              "DocumentMoniker": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\ProyectoSoftwareComision2\\Controllers\\OrderItemCommand.cs",
+              "RelativeDocumentMoniker": "ProyectoSoftwareComision2\\Controllers\\OrderItemCommand.cs",
+              "ToolTip": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\ProyectoSoftwareComision2\\Controllers\\OrderItemCommand.cs",
+              "RelativeToolTip": "ProyectoSoftwareComision2\\Controllers\\OrderItemCommand.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAABcAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-17T23:08:43.016Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "GetAllOrderItemService.cs",
+              "DocumentMoniker": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\Application\\Services\\GetAllOrderItemService.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\GetAllOrderItemService.cs",
+              "ToolTip": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\Application\\Services\\GetAllOrderItemService.cs",
+              "RelativeToolTip": "Application\\Services\\GetAllOrderItemService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-17T23:07:49.132Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\ProyectoSoftwareComision2\\Program.cs",
+              "RelativeDocumentMoniker": "ProyectoSoftwareComision2\\Program.cs",
+              "ToolTip": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\ProyectoSoftwareComision2\\Program.cs",
+              "RelativeToolTip": "ProyectoSoftwareComision2\\Program.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAADgAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-17T23:07:20.763Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
