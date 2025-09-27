@@ -9,15 +9,16 @@ namespace Application.DTOs
 {
     public class CreateDishRequest
     {
-        [Required,MaxLength(255)]
+        [Required(ErrorMessage ="El nombre del plato es obligartorio")]
+        [MaxLength(255,ErrorMessage ="El nombre no puede tener mas de 255 caracteres")]
         public string Name { get; init; }=default!;
         [MaxLength(500)]
         public string? Description { get; init; }
-        [Required]
+        [Required(ErrorMessage = "El precio del plato es obligartorio")]
         [Range(0.01, double.MaxValue,ErrorMessage ="El precio debe ser mayor a cero ")]
         public decimal Price { get; init; }
-        [Required]
-        public int CategoryId { get; init; }
+        [Required(ErrorMessage = "La categoria del plato es obligartorio")]
+        public int Category { get; init; }
         public string? Image { get; init; }
     }
 }

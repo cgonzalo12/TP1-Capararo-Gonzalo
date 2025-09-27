@@ -21,24 +21,24 @@ namespace Application.Services
         {
             var orderItem = new OrderItem
             {
-                OrderId = request.OrderId,
-                DishId = request.DishId,
+                Order = request.OrderId,
+                Dish = request.Dish,
                 Quantity = request.Quantity,
                 Notes = request.Notes,
-                StatusId = request.StatusId,
+                Status = request.Status,
 
             };
             var orderItemId = await command.InsertAsync(orderItem);
             return new OrderItemResponse(
                 orderItemId,
-                orderItem.OrderId,
-                orderItem.DishId,
-                orderItem.Dish.Name,
-                orderItem.Dish.Price,
+                orderItem.Order,
+                orderItem.Dish,
+                orderItem.DishNav.Name,
+                orderItem.DishNav.Price,
                 orderItem.Quantity,
                 orderItem.Notes,
-                orderItem.StatusId,
-                orderItem.Status.Name,
+                orderItem.Status,
+                orderItem.StatusNav.Name,
                 orderItem.CreateDate
             );
         }

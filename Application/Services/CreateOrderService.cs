@@ -28,16 +28,16 @@ namespace Application.Services
                 Price = request.Price,
                 CreateDate = now,
                 UpdateDate = now,
-                DeliveryTypeId = request.DeliveyTypeId,
+                DeliveryType = request.DeliveyType,
                 DeliveryTo = request.DeliveryTo!,
-                OverallStatusId = 1
+                OverallStatus = 1
             };
             var OrderId= await command.InsertAsync(order);
             return new OrderResponse(
                 OrderId,
-                order.DeliveryType.Name,
+                order.DeliveryTypeNav.Name,
                 order.DeliveryTo,
-                order.Status.Name,
+                order.StatusNav.Name,
                 order.Notes,
                 order.Price,
                 order.CreateDate,

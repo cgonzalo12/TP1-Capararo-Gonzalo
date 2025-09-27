@@ -22,9 +22,9 @@ namespace Application.Services
             return orders.Select(o => new OrderResponse(
 
                 o.OrderId,
-                o.DeliveryType.Name,
+                o.DeliveryTypeNav.Name,
                 o.DeliveryTo,
-                o.Status.Name,
+                o.StatusNav.Name,
                 o.Notes,
                 o.Price,
                 o.CreateDate,

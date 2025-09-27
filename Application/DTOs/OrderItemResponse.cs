@@ -8,13 +8,13 @@ namespace Application.DTOs
 {
     public record OrderItemResponse(
         long OrderItemId,
-        long OrderId,
-        Guid DishId,
+        long Order,
+        Guid Dish,
         string DishName,
         decimal Price,
         int Quantity,
         string? Notes,
-        int StatusId,
+        int Status,
         string StatusName,
         DateTime CreateDate
 

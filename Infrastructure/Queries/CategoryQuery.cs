@@ -20,20 +20,20 @@ namespace Infrastructure.Queries
         }
         public async Task<IEnumerable<Category>> GetAllAsync()
         {
-            var categories = await context.Categories
+            var categories = await context.Category
                 .AsNoTracking()
                 .Include(c => c.Dishes)
                 .ToListAsync();
             return categories;
         }
 
-        public async Task<string?> GetCategoryNameByIdAsync(int categoryId)
+        public async Task<Category?> GetCategoryByIdAsync(int categoryId)
         {
-            var category = await context.Categories
+            var category = await context.Category
             .AsNoTracking()
             .FirstOrDefaultAsync(c => c.Id == categoryId);
 
-            return category?.Name;
+            return category;
         }
     }
 }

@@ -11,12 +11,12 @@ namespace Infrastructure.Persistence.Configurations
     public class ApplicationDbContext : DbContext
     {
         //DBSETs
-        public DbSet<Dish> Dishes { get; set; }
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<OrderItem> OrderItems { get; set; }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<Status> Statuses { get; set; }
-        public DbSet<DeliveryType> DeliveryTypes { get; set; }
+        public DbSet<Dish> Dish { get; set; }
+        public DbSet<Category> Category { get; set; }
+        public DbSet<OrderItem> OrderItem { get; set; }
+        public DbSet<Order> Order { get; set; }
+        public DbSet<Status> Status { get; set; }
+        public DbSet<DeliveryType> DeliveryType { get; set; }
         //Constructor
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -40,9 +40,9 @@ namespace Infrastructure.Persistence.Configurations
             modelBuilder.Entity<Dish>().Property(d => d.ImageUrl).HasMaxLength(2086);//max URL length
             //Foreign key relationship with Category
             modelBuilder.Entity<Dish>()
-                .HasOne<Category>(d => d.Category) //has a category
+                .HasOne<Category>(d => d.CategoryNav) //has a category
                 .WithMany(c => c.Dishes) //a category has many dishes
-                .HasForeignKey(d => d.CategoryId);
+                .HasForeignKey(d => d.Category);
 
             //--Entity Category
             modelBuilder.Entity<Category>().HasKey(c => c.Id);
@@ -58,19 +58,19 @@ namespace Infrastructure.Persistence.Configurations
             modelBuilder.Entity<OrderItem>().Property(oi => oi.CreateDate).IsRequired();
             //Foreign key relationship with Dish
             modelBuilder.Entity<OrderItem>()
-                .HasOne<Dish>(oi => oi.Dish) //has a Dish
+                .HasOne<Dish>(oi => oi.DishNav) //has a Dish
                 .WithMany(d => d.OrdersItems) //a Dish has many OrderItems
-                .HasForeignKey(oi => oi.DishId);
+                .HasForeignKey(oi => oi.Dish);
             //Foreign key relationship with Order
             modelBuilder.Entity<OrderItem>()
-                .HasOne<Order>(oi => oi.Order) //has an Order
+                .HasOne<Order>(oi => oi.OrderNav) //has an Order
                 .WithMany(o => o.OrderItems) //an Order has many OrderItems
-                .HasForeignKey(oi => oi.OrderId);
+                .HasForeignKey(oi => oi.Order);
             //Foreign key relationship with Status
             modelBuilder.Entity<OrderItem>()
-                .HasOne<Status>(oi => oi.Status) //has a Status
+                .HasOne<Status>(oi => oi.StatusNav) //has a Status
                 .WithMany(s => s.OrderItems) //a Status has many OrderItems
-                .HasForeignKey(oi => oi.StatusId)
+                .HasForeignKey(oi => oi.Status)
                 .OnDelete(DeleteBehavior.Restrict);
 
             //--Entity Order
@@ -83,14 +83,14 @@ namespace Infrastructure.Persistence.Configurations
             modelBuilder.Entity<Order>().Property(o => o.UpdateDate).IsRequired();
             //Foreign key relationship with DeliveryType
             modelBuilder.Entity<Order>()
-                .HasOne<DeliveryType>(o => o.DeliveryType) //has a DeliveryType
+                .HasOne<DeliveryType>(o => o.DeliveryTypeNav) //has a DeliveryType
                 .WithMany(dt => dt.Orders) //a DeliveryType has many Orders
-                .HasForeignKey(o => o.DeliveryTypeId);
+                .HasForeignKey(o => o.DeliveryType);
             //Foreign key relationship with Status
             modelBuilder.Entity<Order>()
-                .HasOne<Status>(o => o.Status) //has a Status
+                .HasOne<Status>(o => o.StatusNav) //has a Status
                 .WithMany(s => s.Orders) //a Status has many Orders
-                .HasForeignKey(o => o.OverallStatusId)
+                .HasForeignKey(o => o.OverallStatus)
                  .OnDelete(DeleteBehavior.Restrict);
 
             //--Entity Status
@@ -102,9 +102,9 @@ namespace Infrastructure.Persistence.Configurations
         public static async Task SeedAsync(ApplicationDbContext context)
         {
             // Precarga Categories
-            if (!context.Categories.Any())
+            if (!context.Category.Any())
             {
-                context.Categories.AddRange(
+                context.Category.AddRange(
                     new Category { Name = "Entradas", Description = "Pequeñas porciones para abrir el apetito antes del plato principal.", Order = 1 },
                     new Category { Name = "Ensaladas", Description = "Opciones frescas y livianas.", Order = 2 },
                     new Category { Name = "Minutas", Description = "Platos rápidos y clásicos de bodegón: milanesas, tortillas, revueltos.", Order = 3 },
@@ -120,9 +120,9 @@ namespace Infrastructure.Persistence.Configurations
             }
 
             // Precarga DeliveryType
-            if (!context.DeliveryTypes.Any())
+            if (!context.DeliveryType.Any())
             {
-                context.DeliveryTypes.AddRange(
+                context.DeliveryType.AddRange(
                     new DeliveryType { Name = "Delivery" },
                     new DeliveryType { Name = "Take away" },
                     new DeliveryType { Name = "Dine in" }
@@ -131,9 +131,9 @@ namespace Infrastructure.Persistence.Configurations
             }
 
             // Precarga Status
-            if (!context.Statuses.Any())
+            if (!context.Status.Any())
             {
-                context.Statuses.AddRange(
+                context.Status.AddRange(
                     new Status { Name = "Pending" },
                     new Status { Name = "In progress" },
                     new Status { Name = "Ready" },

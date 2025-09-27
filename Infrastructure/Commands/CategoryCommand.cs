@@ -27,7 +27,7 @@ namespace Infrastructure.Commands
 
         public async Task<int> InsertAsync(Category category)
         {
-            await context.Categories.AddAsync(category);
+            await context.Category.AddAsync(category);
             await context.SaveChangesAsync();
             return category.Id;
         }

@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class CreandoBaseDeDatos : Migration
+    public partial class ReparandoEntities : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Categories",
+                name: "Category",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -23,11 +23,11 @@ namespace Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Categories", x => x.Id);
+                    table.PrimaryKey("PK_Category", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "DeliveryTypes",
+                name: "DeliveryType",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -36,11 +36,11 @@ namespace Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DeliveryTypes", x => x.Id);
+                    table.PrimaryKey("PK_DeliveryType", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Statuses",
+                name: "Status",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -49,11 +49,11 @@ namespace Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Statuses", x => x.Id);
+                    table.PrimaryKey("PK_Status", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Dishes",
+                name: "Dish",
                 columns: table => new
                 {
                     DishId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -64,21 +64,21 @@ namespace Infrastructure.Migrations
                     ImageUrl = table.Column<string>(type: "nvarchar(2086)", maxLength: 2086, nullable: true),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CategoryId = table.Column<int>(type: "int", nullable: false)
+                    Category = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Dishes", x => x.DishId);
+                    table.PrimaryKey("PK_Dish", x => x.DishId);
                     table.ForeignKey(
-                        name: "FK_Dishes_Categories_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Categories",
+                        name: "FK_Dish_Category_Category",
+                        column: x => x.Category,
+                        principalTable: "Category",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Orders",
+                name: "Order",
                 columns: table => new
                 {
                     OrderId = table.Column<long>(type: "bigint", nullable: false)
@@ -88,28 +88,28 @@ namespace Infrastructure.Migrations
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DeliveryTypeId = table.Column<int>(type: "int", nullable: false),
-                    OverallStatusId = table.Column<int>(type: "int", nullable: false)
+                    DeliveryType = table.Column<int>(type: "int", nullable: false),
+                    OverallStatus = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Orders", x => x.OrderId);
+                    table.PrimaryKey("PK_Order", x => x.OrderId);
                     table.ForeignKey(
-                        name: "FK_Orders_DeliveryTypes_DeliveryTypeId",
-                        column: x => x.DeliveryTypeId,
-                        principalTable: "DeliveryTypes",
+                        name: "FK_Order_DeliveryType_DeliveryType",
+                        column: x => x.DeliveryType,
+                        principalTable: "DeliveryType",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Orders_Statuses_OverallStatusId",
-                        column: x => x.OverallStatusId,
-                        principalTable: "Statuses",
+                        name: "FK_Order_Status_OverallStatus",
+                        column: x => x.OverallStatus,
+                        principalTable: "Status",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "OrderItems",
+                name: "OrderItem",
                 columns: table => new
                 {
                     OrderItemId = table.Column<long>(type: "bigint", nullable: false)
@@ -117,84 +117,84 @@ namespace Infrastructure.Migrations
                     Quantity = table.Column<int>(type: "int", nullable: false, defaultValue: 1),
                     Notes = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DishId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    OrderId = table.Column<long>(type: "bigint", nullable: false),
-                    StatusId = table.Column<int>(type: "int", nullable: false)
+                    Dish = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Order = table.Column<long>(type: "bigint", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrderItems", x => x.OrderItemId);
+                    table.PrimaryKey("PK_OrderItem", x => x.OrderItemId);
                     table.ForeignKey(
-                        name: "FK_OrderItems_Dishes_DishId",
-                        column: x => x.DishId,
-                        principalTable: "Dishes",
+                        name: "FK_OrderItem_Dish_Dish",
+                        column: x => x.Dish,
+                        principalTable: "Dish",
                         principalColumn: "DishId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_OrderItems_Orders_OrderId",
-                        column: x => x.OrderId,
-                        principalTable: "Orders",
+                        name: "FK_OrderItem_Order_Order",
+                        column: x => x.Order,
+                        principalTable: "Order",
                         principalColumn: "OrderId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_OrderItems_Statuses_StatusId",
-                        column: x => x.StatusId,
-                        principalTable: "Statuses",
+                        name: "FK_OrderItem_Status_Status",
+                        column: x => x.Status,
+                        principalTable: "Status",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Dishes_CategoryId",
-                table: "Dishes",
-                column: "CategoryId");
+                name: "IX_Dish_Category",
+                table: "Dish",
+                column: "Category");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderItems_DishId",
-                table: "OrderItems",
-                column: "DishId");
+                name: "IX_Order_DeliveryType",
+                table: "Order",
+                column: "DeliveryType");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderItems_OrderId",
-                table: "OrderItems",
-                column: "OrderId");
+                name: "IX_Order_OverallStatus",
+                table: "Order",
+                column: "OverallStatus");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderItems_StatusId",
-                table: "OrderItems",
-                column: "StatusId");
+                name: "IX_OrderItem_Dish",
+                table: "OrderItem",
+                column: "Dish");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_DeliveryTypeId",
-                table: "Orders",
-                column: "DeliveryTypeId");
+                name: "IX_OrderItem_Order",
+                table: "OrderItem",
+                column: "Order");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_OverallStatusId",
-                table: "Orders",
-                column: "OverallStatusId");
+                name: "IX_OrderItem_Status",
+                table: "OrderItem",
+                column: "Status");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "OrderItems");
+                name: "OrderItem");
 
             migrationBuilder.DropTable(
-                name: "Dishes");
+                name: "Dish");
 
             migrationBuilder.DropTable(
-                name: "Orders");
+                name: "Order");
 
             migrationBuilder.DropTable(
-                name: "Categories");
+                name: "Category");
 
             migrationBuilder.DropTable(
-                name: "DeliveryTypes");
+                name: "DeliveryType");
 
             migrationBuilder.DropTable(
-                name: "Statuses");
+                name: "Status");
         }
     }
 }

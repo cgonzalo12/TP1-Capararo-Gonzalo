@@ -11,10 +11,9 @@ namespace Application.DTOs
         string Name,
         string? Description,
         decimal Price,
-        bool IsAvailable,
+        GenericResponce Category,
         string? Image,
-        int CategoryId,
-        string? CategoryName,
+        bool isActive,
         DateTime CreateDate,
         DateTime UpdateDate
     );

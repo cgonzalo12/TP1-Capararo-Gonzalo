@@ -19,7 +19,7 @@ namespace Infrastructure.Commands
         }
         public async Task<int> InsertAsync(DeliveryType deliveryType)
         {
-            await context.DeliveryTypes.AddAsync(deliveryType);
+            await context.DeliveryType.AddAsync(deliveryType);
             await context.SaveChangesAsync();
             return deliveryType.Id;
         }

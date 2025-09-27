@@ -19,7 +19,7 @@ namespace Infrastructure.Commands
         }
         public async Task<int> InsertAsync(Status status)
         {
-            await context.Statuses.AddAsync(status);
+            await context.Status.AddAsync(status);
             await context.SaveChangesAsync();
             return status.Id;
         }

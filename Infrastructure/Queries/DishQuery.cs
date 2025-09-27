@@ -21,74 +21,63 @@ namespace Infrastructure.Queries
         }
         public async Task<IEnumerable<Dish>> GetAllAsync()
         {
-            var dishes= await context.Dishes
+            var dishes= await context.Dish
                 .AsNoTracking()
-                .Include(d => d.Category)
+                .Include(d => d.CategoryNav)
                 .ToListAsync();
             return dishes;
         }
 
         public async Task<IEnumerable<Dish>> GetByCategoryAsync(int categoryId)
         {
-            return await context.Dishes
+            return await context.Dish
                 .AsNoTracking()
                 .Include(d => d.Category)
-                .Where(d => d.CategoryId == categoryId)
+                .Where(d => d.Category == categoryId)
                 .ToListAsync();
         }
 
         public async Task<Dish?> GetByIdAsync(Guid id)
         {
-            return await context.Dishes
+            return await context.Dish
                 .AsNoTracking()
-                .Include(d => d.Category)
+                .Include(d => d.CategoryNav)
                 .FirstOrDefaultAsync(d => d.DishId == id);
         }
 
-        public async Task<IEnumerable<Dish>> GetByNameAsync(string name)
-        {
-            return await context.Dishes
-                .AsNoTracking()
-                .Include(d => d.Category)
-                .Where(d => d.Name.Contains(name))
-                .ToListAsync();
-        }
 
 
 
         public async Task<IEnumerable<Dish>> GetOrderedByPriceAsync(bool asc)
         {
-            return await context.Dishes
+            return await context.Dish
                 .AsNoTracking()
-                .Include(d => d.Category)
+                .Include(d => d.CategoryNav)
                 .OrderBy(d => asc ? d.Price : -d.Price)
                 .ToListAsync();
         }
 
         public async Task<IEnumerable<Dish>> GetByAvailabilityAsync(bool available)
         {
-            return await context.Dishes
+            return await context.Dish
                 .AsNoTracking()
-                .Include(d => d.Category)
+                .Include(d => d.CategoryNav)
                 .Where(d => d.Available == available)
                 .ToListAsync();
         }
 
         public async Task<bool> ExistsByNameAsync(string name, Guid Id)
         {
-            return await context.Dishes
+            return await context.Dish
                 .AsNoTracking()
                 .AnyAsync(d => d.Name == name && d.DishId != Id);
         }
 
-
-
-        //-------
-        public async Task<IEnumerable<Dish>> GetFilteredAsync(string? name, int? categoryId, bool orderByPriceAsc)
+        public async Task<IEnumerable<Dish>> GetFilteredAsync(string? name, int? categoryId, bool? orderByPriceAsc)
         {
-            var query = context.Dishes
+            var query = context.Dish
                 .AsNoTracking()
-                .Include(d => d.Category)
+                .Include(d => d.CategoryNav)
                 .AsQueryable();
             if (!string.IsNullOrWhiteSpace(name))
             {
@@ -96,9 +85,9 @@ namespace Infrastructure.Queries
             }
             if (categoryId.HasValue)
             {
-                query = query.Where(d => d.CategoryId == categoryId.Value);
+                query = query.Where(d => d.Category == categoryId.Value);
             }
-            if (orderByPriceAsc)
+            if (orderByPriceAsc.HasValue)
             {
                 query = query.OrderBy(d => d.Price);
             }

@@ -10,7 +10,7 @@ namespace Application.DTOs
     public class CreateOrderRequest
     {
         [Required]
-        public int DeliveyTypeId { get; init; }
+        public int DeliveyType { get; init; }
         [Required]
         [MaxLength(255)]
         public string? DeliveryTo { get; init; }

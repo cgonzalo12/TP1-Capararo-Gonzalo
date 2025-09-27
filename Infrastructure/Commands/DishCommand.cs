@@ -19,14 +19,14 @@ namespace Infrastructure.Commands
         }
         public async Task<Guid> InsertAsync(Dish dish)
         {
-            await context.Dishes.AddAsync(dish);
+            await context.Dish.AddAsync(dish);
             await context.SaveChangesAsync();
             return dish.DishId;
         }
 
         public async Task<Guid> UpdateAsync(Dish dish)
         {
-            context.Dishes.Update(dish);
+            context.Dish.Update(dish);
             await context.SaveChangesAsync();
             return dish.DishId;
         }

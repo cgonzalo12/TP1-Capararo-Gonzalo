@@ -22,14 +22,14 @@ namespace Application.Services
             var orderItems = await query.GetAllAsync();
             return orderItems.Select(oi => new OrderItemResponse(
                 oi.OrderItemId,
-                oi.OrderId,
-                oi.DishId,
-                oi.Dish.Name,
-                oi.Dish.Price,
+                oi.Order,
+                oi.Dish,
+                oi.DishNav.Name,
+                oi.DishNav.Price,
                 oi.Quantity,
                 oi.Notes,
-                oi.StatusId,
-                oi.Status!.Name!,
+                oi.Status,
+                oi.StatusNav!.Name!,
                 oi.CreateDate
             ));
         }

@@ -9,6 +9,6 @@ namespace Application.Services
 {
     public interface IGetAllDishesService
     {
-        Task<IEnumerable<DishResponse>> GetAllAsync();
+        Task<IEnumerable<DishResponse>> GetAllAsync(string? name, int? category, string? sortByPrice, bool? onlyActive);
     }
 }

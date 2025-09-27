@@ -17,11 +17,11 @@ namespace Domain.Entities
         public DateTime CreateDate { get; set; }
         public DateTime? UpdateDate { get; set; }
         // Foreign key + Navigation property
-        public int DeliveryTypeId { get; set; }
-        public DeliveryType DeliveryType { get; set; } = null!;
+        public int DeliveryType { get; set; }
+        public DeliveryType DeliveryTypeNav { get; set; } = null!;
 
-        public int OverallStatusId { get; set; }
-        public Status? Status { get; set; }
+        public int OverallStatus { get; set; }
+        public Status? StatusNav { get; set; }
 
         public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
     }

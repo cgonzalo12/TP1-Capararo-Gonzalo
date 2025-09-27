@@ -20,10 +20,10 @@ namespace Infrastructure.Queries
         }
         public async Task<IEnumerable<Order>> GetAllAsync()
         {
-            var orders =await context.Orders
+            var orders =await context.Order
                 .AsNoTracking()
-                .Include(o => o.DeliveryType)
-                .Include(o => o.Status)
+                .Include(o => o.DeliveryTypeNav)
+                .Include(o => o.StatusNav)
                 .ToListAsync();
             return orders;
         }

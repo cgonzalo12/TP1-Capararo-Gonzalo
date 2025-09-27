@@ -25,10 +25,12 @@ namespace Application.Services
                 dish.Name,
                 dish.Description,
                 dish.Price,
-                dish.Available,
+                new GenericResponce(
+                    dish.CategoryNav.Id,
+                    dish.CategoryNav.Name
+                ),
                 dish.ImageUrl,
-                dish.CategoryId,
-                dish.Category?.Name ?? string.Empty,
+                dish.Available,
                 dish.CreateDate,
                 dish.UpdateDate
             );

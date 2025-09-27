@@ -10,6 +10,6 @@ namespace Application.Interfaces
     public interface ICategoryQuery
     {
         Task<IEnumerable<Category>> GetAllAsync();
-        Task<string?> GetCategoryNameByIdAsync(int categoryId);
+        Task<Category?> GetCategoryByIdAsync(int categoryId);
     }
 }

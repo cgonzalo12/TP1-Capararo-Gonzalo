@@ -20,8 +20,8 @@ namespace Domain.Entities
         public DateTime CreateDate { get; set; }
         public DateTime UpdateDate { get; set; }
         // Foreign key + Navigation property
-        public int CategoryId { get; set; }
-        public Category Category { get; set; }= null!;
+        public int Category { get; set; }
+        public Category CategoryNav { get; set; }= null!;
 
         //OrderItem
         public ICollection<OrderItem> OrdersItems { get; set; } = new List<OrderItem>();

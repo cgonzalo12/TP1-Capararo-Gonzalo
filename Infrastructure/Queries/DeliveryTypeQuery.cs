@@ -21,7 +21,7 @@ namespace Infrastructure.Queries
 
         public async Task<IEnumerable<DeliveryType>> GetAllAsync()
         {
-            var deliverytypes = await context.DeliveryTypes
+            var deliverytypes = await context.DeliveryType
                 .AsNoTracking()
                 .ToListAsync();
             return deliverytypes;
@@ -29,7 +29,7 @@ namespace Infrastructure.Queries
 
         public async Task<DeliveryType?> GetNameByIdAsync(int id)
         {
-            var deliverytype =await context.DeliveryTypes
+            var deliverytype =await context.DeliveryType
                 .AsNoTracking()
                 .FirstOrDefaultAsync(x => x.Id == id);
             return deliverytype;

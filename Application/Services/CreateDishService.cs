@@ -1,6 +1,7 @@
 ﻿using Application.DTOs;
 using Application.Interfaces;
 using Domain.Entities;
+using Domain.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,10 +24,23 @@ namespace Application.Services
         }
         public async Task<DishResponse> CreateAsync(CreateDishRequest request)
         {
-            var existing = await query.GetByNameAsync(request.Name);
+            if (request.Price <= 0)
+            {
+                throw new InvalidPriceException(request.Price);
+            }
+
+            var category = await categoryQuery.GetCategoryByIdAsync(request.Category);
+            if (category is null)
+            {
+                throw new ExistingCategoryException(request.Category);
+            }
+
+            var existing = (await query.GetAllAsync())
+            .Where(d => d.Name.Equals(request.Name, StringComparison.OrdinalIgnoreCase));
+
             if (existing.Any())
             {
-                throw new InvalidOperationException($"Ya existe un plato con el nombre '{request.Name}'.");
+                throw new DishNameAlreadyExistingException(request.Name);
             }
 
             var now = DateTime.UtcNow;
@@ -39,24 +53,26 @@ namespace Application.Services
                 Price = request.Price,
                 Available = true,
                 ImageUrl = request.Image,
-                CategoryId = request.CategoryId,
+                Category = request.Category,
                 CreateDate = now,
                 UpdateDate = now
             };
 
             await command.InsertAsync(dish);
 
-            var categoryName= await categoryQuery.GetCategoryNameByIdAsync(request.CategoryId) ?? string.Empty;
+            var categoryResponce = new GenericResponce(
+                category.Id,
+                category.Name
+            );
 
             return new DishResponse(
                 dish.DishId,
                 dish.Name,
                 dish.Description,
                 dish.Price,
-                dish.Available,
+                categoryResponce,
                 dish.ImageUrl,
-                dish.CategoryId,
-                categoryName,
+                dish.Available,
                 dish.CreateDate,
                 dish.UpdateDate
             );

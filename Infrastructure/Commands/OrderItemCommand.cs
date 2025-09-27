@@ -19,7 +19,7 @@ namespace Infrastructure.Commands
         }
         public async Task<long> InsertAsync(OrderItem orderItem)
         {
-            await context.OrderItems.AddAsync(orderItem);
+            await context.OrderItem.AddAsync(orderItem);
             return orderItem.OrderItemId;
         }
     }

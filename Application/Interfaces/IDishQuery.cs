@@ -11,11 +11,7 @@ namespace Application.Interfaces
     {
         Task<IEnumerable<Dish>> GetAllAsync();
         Task<Dish?> GetByIdAsync(Guid id);
-        Task<IEnumerable<Dish>> GetByNameAsync(string name);
-        Task<IEnumerable<Dish>> GetByCategoryAsync(int categoryId);
-        Task<IEnumerable<Dish>> GetOrderedByPriceAsync(bool asc);
-        Task<IEnumerable<Dish>> GetByAvailabilityAsync(bool available);
-        Task<bool> ExistsByNameAsync(string name, Guid Id);
+
 
     }
 }

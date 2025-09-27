@@ -1,5 +1,6 @@
 ﻿using Application.DTOs;
 using Application.Interfaces;
+using Domain.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,18 +17,45 @@ namespace Application.Services
         {
             this.query = query;
         }
-        public async Task<IEnumerable<DishResponse>> GetAllAsync()
+        public async Task<IEnumerable<DishResponse>> GetAllAsync(string? name, int? category, string? sortByPrice, bool? onlyActive)
         {
             var dishes = await query.GetAllAsync();
+
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                dishes = dishes.Where(d => d.Name.ToLower().Contains(name.ToLower()));
+            }
+
+            if (category.HasValue)
+            {
+                dishes = dishes.Where(d => d.Category == category.Value);
+            }
+
+            if (onlyActive.HasValue)
+            {
+                dishes = dishes.Where(d => d.Available == onlyActive.Value);
+            }
+
+            if (!string.IsNullOrWhiteSpace(sortByPrice)) 
+            { 
+                dishes = sortByPrice.ToLower() switch 
+                { "asc" => dishes.OrderBy(d => d.Price), 
+                  "desc" => dishes.OrderByDescending(d => d.Price),
+                    _ => throw new SortingParametersException(sortByPrice)
+                }; 
+            }
+
             return dishes.Select(dish => new DishResponse(
                 dish.DishId,
                 dish.Name,
                 dish.Description,
                 dish.Price,
-                dish.Available,
+                new GenericResponce(
+                    dish.CategoryNav.Id,
+                    dish.CategoryNav.Name
+                ),
                 dish.ImageUrl,
-                dish.CategoryId,
-                dish.Category?.Name??string.Empty,
+                dish.Available,
                 dish.CreateDate,
                 dish.UpdateDate
             ));

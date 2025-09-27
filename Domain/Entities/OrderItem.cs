@@ -14,12 +14,12 @@ namespace Domain.Entities
         //
         public DateTime CreateDate { get; set; }
         // Foreign key + Navigation property
-        public Guid DishId { get; set; }
-        public Dish Dish { get; set; } = null!;
-        public long OrderId { get; set; }
-        public Order Order { get; set; } = null!;
-        public int  StatusId { get; set; }
-        public Status? Status { get; set; }
+        public Guid Dish { get; set; }
+        public Dish DishNav { get; set; } = null!;
+        public long Order { get; set; }
+        public Order OrderNav { get; set; } = null!;
+        public int  Status { get; set; }
+        public Status? StatusNav { get; set; }
 
     }
 }
