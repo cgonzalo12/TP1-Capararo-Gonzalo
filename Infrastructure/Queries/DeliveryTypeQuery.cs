@@ -27,6 +27,14 @@ namespace Infrastructure.Queries
             return deliverytypes;
         }
 
+        public async Task<DeliveryType?> GetByIdAsync(int id)
+        {
+            var deliverytype = await context.DeliveryType
+                .AsNoTracking()
+                .FirstOrDefaultAsync(x => x.Id == id);
+            return deliverytype;
+        }
+
         public async Task<DeliveryType?> GetNameByIdAsync(int id)
         {
             var deliverytype =await context.DeliveryType

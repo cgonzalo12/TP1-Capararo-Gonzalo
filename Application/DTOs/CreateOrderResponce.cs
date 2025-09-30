@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Application.DTOs
 {
-    public record StatusResponce(
-        int Id,
-        string? Name
-    );  
+    public record CreateOrderResponce(
+        long orderNumber,
+        decimal totalAmount,
+        DateTime createdAT
+    );
 }

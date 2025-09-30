@@ -10,24 +10,28 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Queries
 {
-    public class OrderQuery : IOrderQuery
+    public class StatusQuery : IStatusQuery
     {
         private readonly ApplicationDbContext context;
 
-        public OrderQuery(ApplicationDbContext context)
+        public StatusQuery(ApplicationDbContext context)
         {
             this.context = context;
         }
-        public async Task<IEnumerable<Order>> GetAllAsync()
+        public async Task<IEnumerable<Status>> GetAllAsync()
         {
-            var orders =await context.Order
+            var statuses =await context.Status
                 .AsNoTracking()
-                .Include(o => o.DeliveryTypeNav)
-                .Include(o => o.StatusNav)
-                .Include(o => o.OrderItems)!
-                    .ThenInclude(oi => oi.DishNav)
                 .ToListAsync();
-            return orders;
+            return statuses;
+        }
+
+        public async Task<Status?> GetByIdAsync(int id)
+        {
+            var status = await context.Status
+                .AsNoTracking()
+                .FirstOrDefaultAsync(s => s.Id == id);
+            return status;
         }
     }
 }

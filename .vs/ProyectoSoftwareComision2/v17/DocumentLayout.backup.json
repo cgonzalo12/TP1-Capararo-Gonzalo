@@ -3,16 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1E2B37D6-0503-43BE-A79F-E99D2959FFFD}|ProyectoSoftwareComision2\\ProyectoSoftwareComision2.csproj|c:\\users\\capgo\\source\\repos\\proyectosoftwarecomision2\\proyectosoftwarecomision2\\controllers\\dishescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1E2B37D6-0503-43BE-A79F-E99D2959FFFD}|ProyectoSoftwareComision2\\ProyectoSoftwareComision2.csproj|solutionrelative:proyectosoftwarecomision2\\controllers\\dishescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A211DBFE-17C5-4751-9733-D58F1D91B3B7}|Application\\Application.csproj|c:\\users\\capgo\\source\\repos\\proyectosoftwarecomision2\\application\\services\\createdishservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A211DBFE-17C5-4751-9733-D58F1D91B3B7}|Application\\Application.csproj|solutionrelative:application\\services\\createdishservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A211DBFE-17C5-4751-9733-D58F1D91B3B7}|Application\\Application.csproj|c:\\users\\capgo\\source\\repos\\proyectosoftwarecomision2\\application\\services\\updatedishservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A211DBFE-17C5-4751-9733-D58F1D91B3B7}|Application\\Application.csproj|solutionrelative:application\\services\\updatedishservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A211DBFE-17C5-4751-9733-D58F1D91B3B7}|Application\\Application.csproj|c:\\users\\capgo\\source\\repos\\proyectosoftwarecomision2\\application\\dtos\\createorderrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A211DBFE-17C5-4751-9733-D58F1D91B3B7}|Application\\Application.csproj|solutionrelative:application\\dtos\\createorderrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +14,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CreateDishService.cs",
-              "DocumentMoniker": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\Application\\Services\\CreateDishService.cs",
-              "RelativeDocumentMoniker": "Application\\Services\\CreateDishService.cs",
-              "ToolTip": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\Application\\Services\\CreateDishService.cs",
-              "RelativeToolTip": "Application\\Services\\CreateDishService.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAABoAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-27T18:32:59.437Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "DishesController.cs",
-              "DocumentMoniker": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\ProyectoSoftwareComision2\\Controllers\\DishesController.cs",
-              "RelativeDocumentMoniker": "ProyectoSoftwareComision2\\Controllers\\DishesController.cs",
-              "ToolTip": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\ProyectoSoftwareComision2\\Controllers\\DishesController.cs",
-              "RelativeToolTip": "ProyectoSoftwareComision2\\Controllers\\DishesController.cs",
-              "ViewState": "AgIAAE8AAAAAAAAAAAAwwFkAAABZAAAAAAAAAA==",
+              "Title": "CreateOrderRequest.cs",
+              "DocumentMoniker": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\Application\\DTOs\\CreateOrderRequest.cs",
+              "RelativeDocumentMoniker": "Application\\DTOs\\CreateOrderRequest.cs",
+              "ToolTip": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\Application\\DTOs\\CreateOrderRequest.cs",
+              "RelativeToolTip": "Application\\DTOs\\CreateOrderRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-27T18:17:32.455Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UpdateDishService.cs",
-              "DocumentMoniker": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\Application\\Services\\UpdateDishService.cs",
-              "RelativeDocumentMoniker": "Application\\Services\\UpdateDishService.cs",
-              "ToolTip": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\Application\\Services\\UpdateDishService.cs",
-              "RelativeToolTip": "Application\\Services\\UpdateDishService.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAQwBsAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-26T20:51:36.93Z",
+              "WhenOpened": "2025-09-30T20:48:19.978Z",
               "EditorCaption": ""
             }
           ]

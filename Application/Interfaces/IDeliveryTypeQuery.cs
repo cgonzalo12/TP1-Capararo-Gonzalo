@@ -11,5 +11,7 @@ namespace Application.Interfaces
     {
         Task<IEnumerable<DeliveryType>> GetAllAsync();
         Task<DeliveryType?> GetNameByIdAsync(int id);
+
+        Task<DeliveryType?> GetByIdAsync(int id);
     }
 }

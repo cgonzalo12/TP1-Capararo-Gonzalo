@@ -9,15 +9,12 @@ namespace Application.DTOs
 {
     public class CreateOrderItemRequest
     {
-        [Required]
-        public long OrderId { get; init; }
+
         [Required]
         public Guid Dish { get; init; }
         [Required]
         public int Quantity { get; init; }
         public string? Notes { get; init; }
-        [Required]
-        public int Status { get; init; }
 
     }
 }

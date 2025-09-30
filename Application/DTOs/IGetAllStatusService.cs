@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Application.DTOs
 {
-    public record StatusResponce(
-        int Id,
-        string? Name
-    );  
+    public interface IGetAllStatusService
+    {
+        Task<IEnumerable<StatusResponce>> GetAllAsync();
+    }
 }

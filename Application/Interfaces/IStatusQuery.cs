@@ -1,4 +1,4 @@
-﻿using Application.DTOs;
+﻿using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace Application.Interfaces
 {
-    public interface ICreateOrderService
+    public interface IStatusQuery
     {
-        Task<CreateOrderResponce> CreateAsync(CreateOrderRequest request);
+        Task<IEnumerable<Status>> GetAllAsync();
+
+        Task<Status?> GetByIdAsync(int id);
     }
 }

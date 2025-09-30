@@ -7,14 +7,15 @@ using System.Threading.Tasks;
 namespace Application.DTOs
 {
     public record OrderResponse(
-        long OrderId,
-        string DeliveryType,
+        long OrderNumber,
+        decimal TotalAmount,
         string DeliveryTo,
-        string OverallStatus,
         string? Notes,
-        decimal Price,
-        DateTime CreateDate,
-        DateTime? UpdateDate
+        StatusResponce Status,
+        DeliveryTypeResponce DeliveryType,
+        List<OrderItemResponse> Items,
+        DateTime CreateAt,
+        DateTime? UpdateAt
     );
 
 

@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Application.DTOs
 {
-    public record StatusResponce(
-        int Id,
-        string? Name
-    );  
+    public record DishByOrderItemResponce(
+        Guid Id,
+        string Name,
+        string Image
+    );
+    
+    
 }
