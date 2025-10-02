@@ -9,6 +9,6 @@ namespace Application.Interfaces
 {
     public interface ICreateOrderItemService
     {
-        Task<OrderItemResponse> CreateAsync(CreateOrderItemRequest request);
+        Task<OrderItemResponse> CreateAsync(Items request);
     }
 }

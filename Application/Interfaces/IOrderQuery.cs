@@ -9,6 +9,7 @@ namespace Application.Interfaces
 {
     public interface IOrderQuery
     {
-        Task<IEnumerable<Order>> GetAllAsync();
+        Task<IEnumerable<Order>> GetAllAsync(); 
+        Task<Order?> GetByIdAsync(long id);
     }
 }

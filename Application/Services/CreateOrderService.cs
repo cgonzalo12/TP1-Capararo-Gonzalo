@@ -30,7 +30,7 @@ namespace Application.Services
         {
 
             //deliverytype
-            var deliveryType = await deliveryTypeQuery.GetByIdAsync(request.DeliveyType);
+            var deliveryType = await deliveryTypeQuery.GetByIdAsync(request.Delivery.Id);
             if (deliveryType == null)
                 throw new DeliverytypeException();
 
@@ -42,8 +42,8 @@ namespace Application.Services
                 Price = 0, //se calcula despues
                 CreateDate = now,
                 UpdateDate = now,
-                DeliveryType = request.DeliveyType,
-                DeliveryTo = request.DeliveryTo!,
+                DeliveryType = request.Delivery.Id,
+                DeliveryTo = request.Delivery.To!,
                 OverallStatus = 1,
                 OrderItems = request.Items?.Select(i => new OrderItem
                 {
@@ -80,13 +80,6 @@ namespace Application.Services
                     //precio
                     totalPrice += dish.Price * item.Quantity;
 
-                    orderItemResponses.Add(new OrderItemResponse(
-                        item.OrderItemId,
-                        item.Quantity,
-                        item.Notes,
-                        new StatusResponce(statusItem.Id, statusItem.Name),
-                        new DishByOrderItemResponce(dish.DishId, dish.Name, dish.ImageUrl!)
-                    ));
                 }
             }
 

@@ -19,7 +19,7 @@ namespace Application.Services
             this.query = query;
             this.command = command;
         }
-        public async Task<DishResponse?> UpdateAsync(Guid id, UpdateDishRequest request)
+        public async Task<DishResponse?> UpdateAsync(Guid id, DishUpdateRequest request)
         {
             var dish = await query.GetByIdAsync(id);
             // si no existe el dish
@@ -33,7 +33,7 @@ namespace Application.Services
             .Where(d => d.Name.Equals(request.Name, StringComparison.OrdinalIgnoreCase));
             if (existing.Any())
             {
-                throw new DishNameAlreadyExistingException(request.Name);
+                throw new DishNameAlreadyExistingException(request.Name!);
             }
             if (request.Price<=0)
             {
@@ -44,7 +44,7 @@ namespace Application.Services
             dish.Name = request.Name ?? dish.Name;
             dish.Description = request.Description ?? dish.Description;
             dish.Price = request.Price ?? dish.Price;
-            dish.Available = request.Available ?? dish.Available;
+            dish.Available = request.IsActive ?? dish.Available;
             dish.ImageUrl = request.Image ?? dish.ImageUrl;
             dish.Category = request.Category ?? dish.Category;
             dish.UpdateDate = DateTime.UtcNow;

@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 namespace Application.DTOs
 {
     public record OrderItemResponse(
-        long OrderItemId,
+        long Id,
         int Quantity,
         string? Notes,
-        StatusResponce Status,
-        DishByOrderItemResponce Dish
+        GenericResponce Status,
+        DishShortResponce Dish
     );
     
 }

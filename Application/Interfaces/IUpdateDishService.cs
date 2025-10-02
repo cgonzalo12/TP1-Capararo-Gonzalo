@@ -9,6 +9,6 @@ namespace Application.Interfaces
 {
     public interface IUpdateDishService
     {
-        Task<DishResponse?> UpdateAsync(Guid id, UpdateDishRequest request);
+        Task<DishResponse?> UpdateAsync(Guid id, DishUpdateRequest request);
     }
 }

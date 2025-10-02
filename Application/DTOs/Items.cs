@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Application.DTOs
 {
-    public class CreateOrderItemRequest
+    public class Items
     {
 
         [Required]

@@ -15,7 +15,7 @@ namespace Domain.Entities
 
         //timestamp
         public DateTime CreateDate { get; set; }
-        public DateTime? UpdateDate { get; set; }
+        public DateTime UpdateDate { get; set; }
         // Foreign key + Navigation property
         public int DeliveryType { get; set; }
         public DeliveryType DeliveryTypeNav { get; set; } = null!;

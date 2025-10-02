@@ -17,7 +17,7 @@ namespace Application.Services
         {
             this.command = command;
         }
-        public async Task<OrderItemResponse> CreateAsync(CreateOrderItemRequest request)
+        public async Task<OrderItemResponse> CreateAsync(Items request)
         {
             var orderItem = new OrderItem
             {
@@ -32,8 +32,8 @@ namespace Application.Services
                 orderItemId,
                 orderItem.Quantity,
                 orderItem.Notes,
-                new StatusResponce(orderItem.StatusNav!.Id, orderItem.StatusNav.Name),
-                new DishByOrderItemResponce(orderItem.DishNav.DishId, orderItem.DishNav.Name, orderItem.DishNav.ImageUrl!)
+                new GenericResponce(orderItem.StatusNav!.Id, orderItem.StatusNav.Name),
+                new DishShortResponce(orderItem.DishNav.DishId, orderItem.DishNav.Name, orderItem.DishNav.ImageUrl!)
             );
         }
     }

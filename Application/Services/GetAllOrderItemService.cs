@@ -24,8 +24,8 @@ namespace Application.Services
                 oi.OrderItemId,
                 oi.Quantity,
                 oi.Notes,
-                new StatusResponce(oi.StatusNav!.Id, oi.StatusNav.Name),
-                new DishByOrderItemResponce(oi.DishNav.DishId, oi.DishNav.Name, oi.DishNav.ImageUrl!)
+                new GenericResponce(oi.StatusNav!.Id, oi.StatusNav.Name),
+                new DishShortResponce(oi.DishNav.DishId, oi.DishNav.Name, oi.DishNav.ImageUrl!)
             ));
         }
     }

@@ -10,7 +10,7 @@ namespace Application.DTOs
     public class CreateDishRequest
     {
         [Required(ErrorMessage ="El nombre del plato es obligartorio")]
-        [MaxLength(255,ErrorMessage ="El nombre no puede tener mas de 255 caracteres")]
+        [MaxLength(100,ErrorMessage ="El nombre no puede tener mas de 100 caracteres")]
         public string Name { get; init; }=default!;
         [MaxLength(500)]
         public string? Description { get; init; }
@@ -19,6 +19,7 @@ namespace Application.DTOs
         public decimal Price { get; init; }
         [Required(ErrorMessage = "La categoria del plato es obligartorio")]
         public int Category { get; init; }
+        [Url(ErrorMessage = "La URL de la imagen no es valida")]
         public string? Image { get; init; }
     }
 }

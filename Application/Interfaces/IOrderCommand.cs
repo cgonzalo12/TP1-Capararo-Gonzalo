@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Application.DTOs;
+using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,7 @@ namespace Application.Interfaces
     public interface IOrderCommand
     {
         Task<long> InsertAsync(Order order);
+
+        Task<long> UpdateAsync(Order order);
     }
 }

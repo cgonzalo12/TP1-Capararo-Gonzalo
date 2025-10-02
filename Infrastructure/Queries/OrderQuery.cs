@@ -29,5 +29,17 @@ namespace Infrastructure.Queries
                 .ToListAsync();
             return orders;
         }
+
+        public Task<Order?> GetByIdAsync(long id)
+        {
+            var order = context.Order
+                .AsNoTracking()
+                .Include(o => o.DeliveryTypeNav)
+                .Include(o => o.StatusNav)
+                .Include(o => o.OrderItems)!
+                    .ThenInclude(oi => oi.DishNav)
+                .FirstOrDefaultAsync(o => o.OrderId == id);
+            return order;
+        }
     }
 }

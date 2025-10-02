@@ -9,6 +9,7 @@ namespace Application.Interfaces
 {
     public interface IGetAllOrdersService
     {
-        Task<IEnumerable<OrderResponse>> GetAllAsync();
+        Task<IEnumerable<OrderDetailsResponse>> GetAllAsync(long? statusId = null,
+            DateTime? fechaInicio = null, DateTime? fechaFin = null);
     }
 }

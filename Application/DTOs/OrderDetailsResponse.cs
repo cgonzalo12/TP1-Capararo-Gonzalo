@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace Application.DTOs
 {
-    public record OrderResponse(
+    public record OrderDetailsResponse(
         long OrderNumber,
-        decimal TotalAmount,
-        string DeliveryTo,
+        double TotalAmount,
+        string? DeliveryTo,
         string? Notes,
-        StatusResponce Status,
-        DeliveryTypeResponce DeliveryType,
+        GenericResponce Status,
+        GenericResponce DeliveryType,
         List<OrderItemResponse> Items,
         DateTime CreateAt,
-        DateTime? UpdateAt
+        DateTime UpdateAt
     );
 
 

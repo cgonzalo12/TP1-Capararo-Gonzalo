@@ -1,11 +1,13 @@
 ﻿using Application.DTOs;
 using Application.Interfaces;
 using Domain.Entities;
+using Domain.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Application.Services
 {
@@ -23,53 +25,69 @@ namespace Application.Services
             this.statusQuery = statusQuery;
             this.deliveryTypeQuery = deliveryTypeQuery;
         }
-        public async Task<IEnumerable<OrderResponse>> GetAllAsync()
+        public async Task<IEnumerable<OrderDetailsResponse>> GetAllAsync(long? statusId = null,
+            DateTime? fechaInicio =null,DateTime? fechaFin = null)
         {
+            // Validación de rango
+            if (fechaInicio.HasValue && fechaFin.HasValue && fechaInicio > fechaFin)
+            {
+                throw new DateRangeException();
+            }
+
+
             var orders = await query.GetAllAsync();
-            var orderResponses = new List<OrderResponse>();
+            if (statusId.HasValue)
+            {
+                orders = orders.Where(o => o.OverallStatus == statusId.Value);
+            }
+
+            // Filtro por rango de fechas si corresponde
+            if (fechaInicio.HasValue)
+            {
+                orders = orders.Where(o => o.CreateDate >= fechaInicio.Value);
+            }
+            if (fechaFin.HasValue)
+            {
+                orders = orders.Where(o => o.CreateDate <= fechaFin.Value);
+            }
+
+            var orderResponses = new List<OrderDetailsResponse>();
 
             foreach (var o in orders)
             {
                 // Traer status del order
                 var status = await statusQuery.GetByIdAsync(o.OverallStatus);
-                if (status == null)
-                    throw new Exception($"Status con Id {o.OverallStatus} no existe.");
-
+                
                 // Traer deliveryType del order
                 var deliveryType = await deliveryTypeQuery.GetByIdAsync(o.DeliveryType);
-                if (deliveryType == null)
-                    throw new Exception($"DeliveryType con Id {o.DeliveryType} no existe.");
 
                 // Procesar items
                 var itemResponses = new List<OrderItemResponse>();
+                var itemId = 1;
                 foreach (var oi in o.OrderItems)
                 {
                     // status item
                     var statusItem = await statusQuery.GetByIdAsync(oi.Status);
-                    if (statusItem == null)
-                        throw new Exception($"Status con Id {oi.Status} no existe.");
 
                     // dish
                     var dish = await dishQuery.GetByIdAsync(oi.Dish);
-                    if (dish == null)
-                        throw new Exception($"Dish con Id {oi.Dish} no existe.");
 
                     itemResponses.Add(new OrderItemResponse(
-                        oi.OrderItemId,
+                        itemId++,
                         oi.Quantity,
                         oi.Notes,
-                        new StatusResponce(statusItem.Id, statusItem.Name),
-                        new DishByOrderItemResponce(dish.DishId, dish.Name, dish.ImageUrl!)
+                        new GenericResponce(statusItem!.Id, statusItem.Name),
+                        new DishShortResponce(dish!.DishId, dish.Name, dish.ImageUrl!)
                     ));
                 }
 
-                orderResponses.Add(new OrderResponse(
+                orderResponses.Add(new OrderDetailsResponse(
                     o.OrderId,
-                    o.Price,
+                    (double)o.Price,
                     o.DeliveryTo,
                     o.Notes,
-                    new StatusResponce(status.Id, status.Name),
-                    new DeliveryTypeResponce(deliveryType.Id, deliveryType.Name),
+                    new GenericResponce(status!.Id, status.Name),
+                    new GenericResponce(deliveryType!.Id, deliveryType.Name),
                     itemResponses,
                     o.CreateDate,
                     o.UpdateDate
@@ -78,33 +96,5 @@ namespace Application.Services
 
             return orderResponses;
         }
-
-
-
-        //public async Task<IEnumerable<OrderResponse>> GetAllAsync()
-        //{
-        //    var orders = await query.GetAllAsync();
-
-        //    return orders.Select(o => new OrderResponse(
-
-        //        o.OrderId,
-        //        o.Price,
-        //        o.DeliveryTo,
-        //        o.Notes,
-        //        new StatusResponce(o.StatusNav!.Id, o.StatusNav.Name),
-        //        new DeliveryTypeResponce(o.DeliveryTypeNav.Id, o.DeliveryTypeNav.Name),
-        //        o.OrderItems.Select(oi => new OrderItemResponse(
-        //            oi.OrderItemId,
-        //            oi.Quantity,
-        //            oi.Notes,
-        //            new StatusResponce(oi.StatusNav!.Id, oi.StatusNav.Name),
-        //            new DishByOrderItemResponce(oi.DishNav.DishId, oi.DishNav.Name, oi.DishNav.ImageUrl!)
-        //            ))
-        //        .ToList(),
-        //        o.CreateDate,
-        //        o.UpdateDate
-        //    ));
-
-        //}
     }
 }

@@ -10,15 +10,11 @@ namespace Application.DTOs
     public class CreateOrderRequest
     {
         [Required]
-        [Range(1, int.MaxValue, ErrorMessage = "Debe seleccionar un tipo de entrega válido")]
-        public int DeliveyType { get; init; }
-        [Required]
-        [MaxLength(255)]
-        public string? DeliveryTo { get; init; }
+        public Delivery Delivery { get; set; } = null!;
         [MaxLength(500)]
         public string? Notes { get; init; }
         
-        public IEnumerable<CreateOrderItemRequest> Items { get; init; } = new List<CreateOrderItemRequest>();
+        public IEnumerable<Items> Items { get; init; } = new List<Items>();
 
 
     }

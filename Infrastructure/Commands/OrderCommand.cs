@@ -1,4 +1,5 @@
-﻿using Application.Interfaces;
+﻿using Application.DTOs;
+using Application.Interfaces;
 using Domain.Entities;
 using Infrastructure.Persistence.Configurations;
 using System;
@@ -25,6 +26,12 @@ namespace Infrastructure.Commands
             return order.OrderId;
         }
 
-       
+        public async Task<long> UpdateAsync(Order order)
+        {
+            context.Order.Update(order);
+            await context.SaveChangesAsync();
+            return order.OrderId;
+
+        }
     }
 }

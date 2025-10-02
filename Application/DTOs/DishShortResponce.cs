@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.DTOs
 {
-    public record DishByOrderItemResponce(
+    public record DishShortResponce(
         Guid Id,
         string Name,
         string Image
