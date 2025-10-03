@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1E2B37D6-0503-43BE-A79F-E99D2959FFFD}|ProyectoSoftwareComision2\\ProyectoSoftwareComision2.csproj|c:\\users\\capgo\\source\\repos\\proyectosoftwarecomision2\\proyectosoftwarecomision2\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1E2B37D6-0503-43BE-A79F-E99D2959FFFD}|ProyectoSoftwareComision2\\ProyectoSoftwareComision2.csproj|solutionrelative:proyectosoftwarecomision2\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1E2B37D6-0503-43BE-A79F-E99D2959FFFD}|ProyectoSoftwareComision2\\ProyectoSoftwareComision2.csproj|c:\\users\\capgo\\source\\repos\\proyectosoftwarecomision2\\proyectosoftwarecomision2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1E2B37D6-0503-43BE-A79F-E99D2959FFFD}|ProyectoSoftwareComision2\\ProyectoSoftwareComision2.csproj|solutionrelative:proyectosoftwarecomision2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -43,6 +47,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\ProyectoSoftwareComision2\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "ProyectoSoftwareComision2\\Controllers\\OrderController.cs",
+              "ToolTip": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\ProyectoSoftwareComision2\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "ProyectoSoftwareComision2\\Controllers\\OrderController.cs",
+              "ViewState": "AgIAAG0AAAAAAAAAAAAcwHcAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-03T16:34:15.383Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\ProyectoSoftwareComision2\\Program.cs",
               "RelativeDocumentMoniker": "ProyectoSoftwareComision2\\Program.cs",
@@ -55,7 +72,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "InvalidTransactionException.cs",
               "DocumentMoniker": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\Domain\\Exceptions\\InvalidTransactionException.cs",
               "RelativeDocumentMoniker": "Domain\\Exceptions\\InvalidTransactionException.cs",
@@ -67,7 +84,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\Infrastructure\\Persistence\\Configurations\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Persistence\\Configurations\\ApplicationDbContext.cs",
@@ -79,7 +96,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Order.cs",
               "DocumentMoniker": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\Domain\\Entities\\Order.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\Order.cs",
@@ -91,7 +108,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "OrderCommand.cs",
               "DocumentMoniker": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\Infrastructure\\Commands\\OrderCommand.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Commands\\OrderCommand.cs",
@@ -103,7 +120,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "UpdateDishService.cs",
               "DocumentMoniker": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\Application\\Services\\UpdateDishService.cs",
               "RelativeDocumentMoniker": "Application\\Services\\UpdateDishService.cs",
@@ -115,7 +132,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "OrderItemUpdateService.cs",
               "DocumentMoniker": "C:\\Users\\capgo\\source\\repos\\ProyectoSoftwareComision2\\Application\\Services\\OrderItemUpdateService.cs",
               "RelativeDocumentMoniker": "Application\\Services\\OrderItemUpdateService.cs",
@@ -123,8 +140,7 @@
               "RelativeToolTip": "Application\\Services\\OrderItemUpdateService.cs",
               "ViewState": "AgIAACUAAAAAAAAAAAAYwDYAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T16:09:30.864Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-03T16:09:30.864Z"
             }
           ]
         }
