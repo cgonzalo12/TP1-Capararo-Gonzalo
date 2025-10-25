@@ -64,20 +64,29 @@ namespace Application.Services
             // status order
             int CalculateOverallStatus(IEnumerable<OrderItem> items)
             {
+                // Todos pendientes → orden pendiente
                 if (items.All(i => i.Status == 1))
                     return 1; // Pending
+
+                // Al menos uno en preparación → En preparación
                 if (items.Any(i => i.Status == 2))
                     return 2; // In Progress
+
+                // Todos listos → Listo para entregar
                 if (items.All(i => i.Status == 3))
                     return 3; // Ready
+
+                // Si algunos entregados y otros listos → Entrega parcial
+                if (items.Any(i => i.Status == 4) && items.Any(i => i.Status != 4))
+                    return 4; // Partial Delivery
+
+                // Todos entregados → Cerrada
                 if (items.All(i => i.Status == 4))
                     return 5; // Closed
-                if (items.Any(i => i.Status == 4))
-                    return 4; // Delivery parcial
 
-                // Si hay mezcla de pendientes y listos
-                return 2; // En preparación
+                return 2; // default: En preparación
             }
+
             order.OverallStatus = CalculateOverallStatus(order.OrderItems);
             order.StatusNav = null; // para que lo recargue
             await command.UpdateAsync(order);

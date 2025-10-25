@@ -91,7 +91,7 @@ namespace ProyectoSoftwareComision2.Controllers
             }
 
         }
-        [HttpPut("{id:long}")]
+        [HttpPatch]
         [ProducesResponseType(typeof(IActionResult), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiError), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> UpdateOrderAsync(long id,OrderUpdateRequest updateRequest)
@@ -116,7 +116,7 @@ namespace ProyectoSoftwareComision2.Controllers
             
 
         }
-        [HttpPut("{id:long}/item/{itemId:guid}")]
+        [HttpPatch("{id:long}/item/{itemId:guid}")]
         [ProducesResponseType(typeof(IActionResult), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiError), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(ApiError), StatusCodes.Status400BadRequest)]//algo

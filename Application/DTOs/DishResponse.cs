@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Application.DTOs
 {
     public record DishResponse(
-        Guid DishId,
+        Guid Id,
         string Name,
         string? Description,
         decimal Price,

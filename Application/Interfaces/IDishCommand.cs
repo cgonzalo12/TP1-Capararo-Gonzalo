@@ -11,6 +11,7 @@ namespace Application.Interfaces
     {
         Task<Guid> InsertAsync(Dish dish);
         Task<Guid> UpdateAsync(Dish dish);
-        
+        Task<Guid> DeleteAsync(Dish dish);
+
     }
 }

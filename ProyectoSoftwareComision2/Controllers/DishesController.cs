@@ -15,14 +15,23 @@ namespace ProyectoSoftwareComision2.Controllers
         private readonly IGetAllDishesService getAllDishes;
         private readonly IGetDishByIdService getDishById;
         private readonly IUpdateDishService updateDish;
+        private readonly IDeleteDishService deleteDish;
+        private readonly IGetAllCategoryService getAllCategory;
+        private readonly IGetAllDeliveryTypeService getAllDeliveryType;
+        private readonly IGetAllStatusService getAllStatus;
 
         public DishesController(ICreateDishService createDish, IGetAllDishesService getAllDishes, IGetDishByIdService getDishById
-            , IUpdateDishService updateDish)
+            , IUpdateDishService updateDish,IDeleteDishService deleteDish,IGetAllCategoryService getAllCategory
+            ,IGetAllDeliveryTypeService getAllDeliveryType,IGetAllStatusService getAllStatus)
         {
             this.createDish = createDish;
             this.getAllDishes = getAllDishes;
             this.getDishById = getDishById;
             this.updateDish = updateDish;
+            this.deleteDish = deleteDish;
+            this.getAllCategory = getAllCategory;
+            this.getAllDeliveryType = getAllDeliveryType;
+            this.getAllStatus = getAllStatus;
         }
 
         [HttpPost]
@@ -56,8 +65,8 @@ namespace ProyectoSoftwareComision2.Controllers
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<DishResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiError), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> GetAll([FromQuery]string? name, [FromQuery] int? category,
-            [FromQuery]string? sortByPrice, [FromQuery] bool? onlyActive)
+        public async Task<IActionResult> GetAll([FromQuery] string? name, [FromQuery] int? category,
+            [FromQuery] string? sortByPrice, [FromQuery] bool? onlyActive)
         {
             try
             {
@@ -96,7 +105,7 @@ namespace ProyectoSoftwareComision2.Controllers
             }
             catch (DishNameAlreadyExistingException ex)
             {
-                    return Conflict(new { message = ex.Message });
+                return Conflict(new { message = ex.Message });
             }
             catch (DishNotFoundException ex)
             {
@@ -109,6 +118,49 @@ namespace ProyectoSoftwareComision2.Controllers
 
         }
 
+        [HttpDelete("{id:guid}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(ApiError), StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> DeleteDish(Guid id)
+        {
+            try
+            {
+                var dish = await deleteDish.DeleteAsync(id);
+                if (dish is null) return NotFound(new { message = "Dish not found." });
+                // Here you would call the delete service method
+                return Ok(dish);
+            }
+            catch (DishNotFoundException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
 
+
+        }
+
+        [HttpOptions("/api/v1/category")]
+        [ProducesResponseType(typeof(IEnumerable<CategoryResponse>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetAllCategories()
+        {
+            var response = await getAllCategory.GetAllAsync();
+            return Ok(response);
+        }
+
+
+        [HttpOptions("/api/v1/deliveryType")]
+        [ProducesResponseType(typeof(IEnumerable<DeliveryTypeResponce>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetAllDeliveryType()
+        {
+            var response = await getAllDeliveryType.GetAllAsync();
+            return Ok(response);
+        }
+
+        [HttpOptions("/api/v1/status")]
+        [ProducesResponseType(typeof(IEnumerable<StatusResponce>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetAllStatus()
+        {
+            var response = await getAllStatus.GetAllAsync();
+            return Ok(response);
+        }
     }
 }

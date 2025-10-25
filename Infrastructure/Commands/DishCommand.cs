@@ -30,5 +30,11 @@ namespace Infrastructure.Commands
             await context.SaveChangesAsync();
             return dish.DishId;
         }
+        public async Task<Guid> DeleteAsync(Dish dish)
+        {
+            context.Dish.Remove(dish);
+            await context.SaveChangesAsync();
+            return dish.DishId;
+        }
     }
 }
