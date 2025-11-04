@@ -12,6 +12,9 @@ namespace Application.Interfaces
     {
         Task<long> InsertAsync(Order order);
 
-        Task<long> UpdateAsync(Order order);
+        Task<long> PatchAsync(Order order);
+
+        Task<long> PatchItemsAsync(Order order);
+
     }
 }

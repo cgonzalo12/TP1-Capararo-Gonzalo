@@ -138,7 +138,7 @@ namespace ProyectoSoftwareComision2.Controllers
 
         }
 
-        [HttpOptions("/api/v1/category")]
+        [HttpGet("/api/v1/category")]
         [ProducesResponseType(typeof(IEnumerable<CategoryResponse>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAllCategories()
         {
@@ -147,7 +147,7 @@ namespace ProyectoSoftwareComision2.Controllers
         }
 
 
-        [HttpOptions("/api/v1/deliveryType")]
+        [HttpGet("/api/v1/deliveryType")]
         [ProducesResponseType(typeof(IEnumerable<DeliveryTypeResponce>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAllDeliveryType()
         {
@@ -155,7 +155,7 @@ namespace ProyectoSoftwareComision2.Controllers
             return Ok(response);
         }
 
-        [HttpOptions("/api/v1/status")]
+        [HttpGet("/api/v1/status")]
         [ProducesResponseType(typeof(IEnumerable<StatusResponce>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAllStatus()
         {

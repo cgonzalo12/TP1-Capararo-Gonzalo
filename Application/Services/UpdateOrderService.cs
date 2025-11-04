@@ -36,10 +36,14 @@ namespace Application.Services
 
             // Copia de los items actuales
             var orderItems = new List<OrderItem>(order.OrderItems);
+            var itemsToDelete = new List<OrderItem>();
+            var updatedOrderItems = new List<OrderItem>();
 
-            if (orderUpdateRequest.Items != null)
+
+
+            if (orderUpdateRequest.Items!.Any())
             {
-                foreach (var item in orderUpdateRequest.Items)
+                foreach (var item in orderUpdateRequest.Items!)
                 {
                     var dish = await dishQuery.GetByIdAsync(item.Dish);
                     if (dish == null)
@@ -55,6 +59,7 @@ namespace Application.Services
                         existingItem.Quantity = item.Quantity;
                         if (!string.IsNullOrWhiteSpace(item.Notes))
                             existingItem.Notes = item.Notes;
+                        updatedOrderItems.Add(existingItem);
                     }
                     else
                     {
@@ -70,12 +75,21 @@ namespace Application.Services
                             OrderNav = order
                         };
 
-                        orderItems.Add(newItem);
+                        updatedOrderItems.Add(newItem);
                     }
+                    itemsToDelete = orderItems
+                        .Where(originalItem => !updatedOrderItems.Any(updatedItem => updatedItem.Dish == originalItem.Dish))
+                        .ToList();
+
                 }
             }
+            else
+            {
+                itemsToDelete = orderItems;
+                updatedOrderItems.Clear();
+            }
 
-            order.OrderItems = orderItems;
+            order.OrderItems = updatedOrderItems;
 
             // Recalculo el precio total
             order.Price = orderItems.Sum(oi => oi.DishNav.Price * oi.Quantity);
@@ -84,7 +98,7 @@ namespace Application.Services
             order.UpdateDate = DateTime.UtcNow;
 
             // Persisto cambios
-            await command.UpdateAsync(order);
+            await command.PatchItemsAsync(order);
 
             return new OrderUpdateResponse
             {

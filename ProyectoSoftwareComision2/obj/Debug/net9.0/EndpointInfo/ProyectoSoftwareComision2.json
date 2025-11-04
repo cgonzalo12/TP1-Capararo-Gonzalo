@@ -399,7 +399,7 @@
       }
     },
     "/api/v1/category": {
-      "options": {
+      "get": {
         "tags": [
           "Dishes"
         ],
@@ -437,7 +437,7 @@
       }
     },
     "/api/v1/deliveryType": {
-      "options": {
+      "get": {
         "tags": [
           "Dishes"
         ],
@@ -475,7 +475,7 @@
       }
     },
     "/api/v1/status": {
-      "options": {
+      "get": {
         "tags": [
           "Dishes"
         ],

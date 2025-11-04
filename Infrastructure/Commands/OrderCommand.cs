@@ -2,6 +2,7 @@
 using Application.Interfaces;
 using Domain.Entities;
 using Infrastructure.Persistence.Configurations;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,12 +27,36 @@ namespace Infrastructure.Commands
             return order.OrderId;
         }
 
-        public async Task<long> UpdateAsync(Order order)
+        public async Task<long> PatchAsync(Order order)
+        {
+            // Adjuntamos la entidad si no está siendo rastreada
+            context.Attach(order);
+
+            // Marcamos solo los campos que queremos que se actualicen
+            context.Entry(order).Property(o => o.OverallStatus).IsModified = true;
+            context.Entry(order).Property(o => o.UpdateDate).IsModified = true;
+
+            // También marcamos los items modificados
+            foreach (var item in order.OrderItems)
+            {
+                context.Attach(item); // adjunta si no está rastreado
+                context.Entry(item).Property(i => i.Status).IsModified = true;
+            }
+
+            await context.SaveChangesAsync();
+
+            //context.Order.Update(order);
+            //await context.SaveChangesAsync();
+            return order.OrderId;
+
+        }
+
+        public async Task<long> PatchItemsAsync(Order order)
         {
             context.Order.Update(order);
             await context.SaveChangesAsync();
-            return order.OrderId;
 
+            return order.OrderId;
         }
     }
 }
