@@ -17,10 +17,19 @@ namespace Infrastructure.Commands
         {
             this.context = context;
         }
+
+        public async Task<long> DeleteAsync(OrderItem orderItem)
+        {
+            context.OrderItem.Remove(orderItem);
+            await context.SaveChangesAsync();
+            return orderItem.OrderItemId;
+        }
+
         public async Task<long> InsertAsync(OrderItem orderItem)
         {
-            await context.OrderItem.AddAsync(orderItem);
-            return orderItem.OrderItemId;
+            context.OrderItem.Add(orderItem);
+            await context.SaveChangesAsync();
+            return (orderItem.OrderItemId);
         }
     }
 }

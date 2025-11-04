@@ -10,5 +10,7 @@ namespace Application.Interfaces
     public interface IOrderItemCommand
     {
         Task<long> InsertAsync(OrderItem orderItem);
+
+        Task<long> DeleteAsync(OrderItem orderItem);
     }
 }

@@ -15,12 +15,14 @@ namespace Application.Services
         private readonly IOrderQuery query;
         private readonly IOrderCommand command;
         private readonly IDishQuery dishQuery;
+        private readonly IOrderItemCommand orderItemCommand;
 
-        public UpdateOrderService(IOrderQuery query,IOrderCommand command,IDishQuery dishQuery)
+        public UpdateOrderService(IOrderQuery query,IOrderCommand command,IDishQuery dishQuery,IOrderItemCommand orderItemCommand)
         {
             this.query = query;
             this.command = command;
             this.dishQuery = dishQuery;
+            this.orderItemCommand = orderItemCommand;
         }
 
 
@@ -81,6 +83,7 @@ namespace Application.Services
                         .Where(originalItem => !updatedOrderItems.Any(updatedItem => updatedItem.Dish == originalItem.Dish))
                         .ToList();
 
+
                 }
             }
             else
@@ -89,16 +92,24 @@ namespace Application.Services
                 updatedOrderItems.Clear();
             }
 
+            //  Elimino los ítems que fueron quitados de la orden
+            foreach (var itemToDelete in itemsToDelete)
+            {
+                await orderItemCommand.DeleteAsync(itemToDelete);
+            }
+
+
             order.OrderItems = updatedOrderItems;
 
             // Recalculo el precio total
-            order.Price = orderItems.Sum(oi => oi.DishNav.Price * oi.Quantity);
+            order.Price = updatedOrderItems.Sum(oi => oi.DishNav.Price * oi.Quantity);
 
             // Actualizo la fecha de modificación
             order.UpdateDate = DateTime.UtcNow;
 
             // Persisto cambios
             await command.PatchItemsAsync(order);
+            
 
             return new OrderUpdateResponse
             {
@@ -107,25 +118,6 @@ namespace Application.Services
                 updateAt = order.UpdateDate
             };
         }
-
-        //public async Task<OrderUpdateResponse> UpdateAsync( long orderId,OrderUpdateRequest orderUpdateRequest)
-        //{
-        //    var order = await query.GetByIdAsync(orderId);
-        //    if (order == null)
-        //    {
-        //        throw new OrderNotFundException();
-        //    }
-        //    if (order.StatusNav!.Id !=1)
-        //    {
-        //        throw new ClosedOrderException();
-        //    }
-        //    var orderItems = new List<OrderItem>(order.OrderItems);
-
-
-
-
-
-        //}
 
 
     }
